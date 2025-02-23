@@ -20,11 +20,14 @@ module tiewrap(r = 7.5)
 
 module swooping_tiewrap()
     leg_placement()
-        for (a = [-54 : 18 : 90])
-            translate([-0.2, 1.5, 0])
+        for (i = [0 : 1 : 8]) {
+            a = -54 + i * 18;
+            j = 8 - i;
+            translate([-0.3-j/20, 1.5, 0])
                 rotate([0, 0, 90 - a])
                     translate([0, -1, 0])
                         tiewrap(7);
+        }
 
 module context() {
     lace();
