@@ -52,11 +52,6 @@ module leg() {
                     smooth_cube(pipe_diam, leg_depth*0.8, hook_height, smoothness, center = true);
     }
 
-    translate([- leg_length / 2, -leg_depth/2, -total_height / 2 - pole_height])
-        smooth_cube(pipe_diam,
-                    leg_depth,
-                    total_height + 2 * pole_height,
-                    smoothness);
 }
 
 module leg_placement() translate(leg_offset) children();
@@ -87,6 +82,23 @@ module anchor() {
     rotate_copy(0, 0, 180)
         leg_placement()
             leg();
+
+    rotate([0, 0, 180])
+        leg_placement()
+            translate([- leg_length / 2, -leg_depth/2, -lace_diameter / 2 - pipe_diam])
+                smooth_cube(pipe_diam,
+                            leg_depth,
+                            lace_diameter + 2 * pipe_diam,
+                            smoothness);
+
+
+    leg_placement()
+        translate([- leg_length / 2, -leg_depth/2, -total_height / 2 - pole_height])
+            smooth_cube(pipe_diam,
+                        leg_depth,
+                        total_height + 2 * pole_height,
+                        smoothness);
+
 }
 
 color("grey")
