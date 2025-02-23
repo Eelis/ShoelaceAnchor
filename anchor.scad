@@ -2,10 +2,10 @@ use <util.scad>
 
 $fn = 20;
 
-lace_diameter = 4;
+lace_diameter = 3;
 tiewrap_width = 2.5;
 tiewrap_thickness = 0.65;
-lace_clearance = 0.4;
+lace_clearance = 0.2;
 pole_to_pole = 3 * lace_diameter;
 lace_x_clearance = (pole_to_pole - lace_diameter) / 2;
 pipe_diam = 2.3;
@@ -60,7 +60,7 @@ module roof()
     hull()
         rotate_copy(0, 0, 180)
             leg_placement()
-                translate([-leg_length / 2, -leg_depth / 2, lace_diameter / 2])
+                translate([-leg_length / 2, -leg_depth / 2, lace_diameter / 2 + lace_clearance])
                     smooth_cube(
                         pipe_diam,
                         leg_depth,
@@ -70,7 +70,7 @@ module bottom_bar()
     hull()
         rotate_copy(0, 0, 180)
             leg_placement()
-                translate([-leg_length / 2, -leg_depth / 2, -lace_diameter / 2 - pipe_diam])
+                translate([-leg_length / 2, -leg_depth / 2, -lace_diameter / 2 - pipe_diam - lace_clearance])
                     smooth_cube(
                         pipe_diam,
                         leg_depth,

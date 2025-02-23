@@ -3,12 +3,17 @@ include <anchor.scad>
 $fn = 20;
 
 module lace() {
+    rotate([90, 0, 0])
+        cylinder(h = 10, r = lace_diameter/2, center=true);
+
+/*
     arc_radius = 3.5;
     translate([0, 0, -arc_radius])
         rotate([90, 0, 100])
             rotate_extrude(angle = 180)
                 translate([arc_radius, 0, 0])
                     circle(lace_diameter / 2);
+                    */
 }
 
 module tiewrap(r = 7.5)
