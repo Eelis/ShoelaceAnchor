@@ -3,8 +3,9 @@ include <anchor.scad>
 $fn = 20;
 
 module lace() {
-    rotate([90, 0, 0])
-        cylinder(h = 10, r = lace_diameter/2, center=true);
+    translate([-lace_diameter + lace_clearance, 0, 0])
+        rotate([90, 0, 0])
+            cylinder(h = 10, r = lace_diameter/2, center=true);
 
 /*
     arc_radius = 3.5;

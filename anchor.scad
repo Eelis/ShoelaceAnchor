@@ -83,15 +83,11 @@ module anchor() {
         leg_placement()
             leg();
 
-    rotate([0, 0, 180])
-        leg_placement()
-            translate([- leg_length / 2, -leg_depth/2, -lace_diameter / 2 - pipe_diam])
-                smooth_cube(pipe_diam,
-                            leg_depth,
-                            lace_diameter + 2 * pipe_diam,
-                            smoothness);
+    // center pillar:
+    translate([pipe_diam/2 - 0.5 * lace_diameter + 2 * lace_clearance, 0, 0])
+        smooth_cube(pipe_diam, leg_depth * 0.9, lace_diameter + 2 * (lace_clearance + pipe_diam), smoothness, center = true);
 
-
+    // tall sidewall:
     leg_placement()
         translate([- leg_length / 2, -leg_depth/2, -total_height / 2 - pole_height])
             smooth_cube(pipe_diam,
@@ -99,6 +95,14 @@ module anchor() {
                         total_height + 2 * pole_height,
                         smoothness);
 
+    // non-tall sidewall:
+    rotate([0, 0, 180])
+        leg_placement()
+            translate([- leg_length / 2, -leg_depth/2, -lace_diameter / 2 - pipe_diam])
+                smooth_cube(pipe_diam,
+                            leg_depth,
+                            lace_diameter + 2 * pipe_diam,
+                            smoothness);
 }
 
 color("grey")
