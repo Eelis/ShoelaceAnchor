@@ -2,8 +2,10 @@ include <anchor.scad>
 
 $fn = 20;
 
+lace_diameter = 3.5;
+
 module lace() {
-    translate([-lace_diameter + lace_clearance, 0, 0])
+    translate([-lace_diameter + lace_clearance + 1, 0, 0])
         rotate([90, 0, 0])
             cylinder(h = 10, r = lace_diameter/2, center=true);
 

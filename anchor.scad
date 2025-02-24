@@ -2,24 +2,21 @@ use <util.scad>
 
 $fn = 20;
 
-lace_diameter = 3;
 tiewrap_width = 2.5;
 tiewrap_thickness = 0.65;
 lace_clearance = 0.2;
-pole_to_pole = 3 * lace_diameter;
-lace_x_clearance = (pole_to_pole - lace_diameter) / 2;
-pipe_diam = 2.5;
+pole_to_pole = 9;
+pipe_diam = 2.4;
 leg_y_spacing = 1.4 - pipe_diam * 0.2;
-connector_length = lace_diameter + 2 * lace_clearance + 2 * pipe_diam;
 leg_depth = 2 * pipe_diam + leg_y_spacing;
 smoothness = pipe_diam / 2;
 tiewrap_hole_width = tiewrap_width * 1.4;
 leg_length = tiewrap_hole_width + pipe_diam * 2;
 leg_spacing = tiewrap_thickness * 1.7 - 0.5;
-leg_offset = [leg_length / 2 + lace_diameter / 2 + lace_x_clearance, 1, 0];
+leg_offset = [leg_length / 2 + 4.5, 2, 0];
 total_height = 3 * pipe_diam + 2 * leg_spacing;
 hook_height = pipe_diam * 1.4;
-pole_height = 3.5;
+pole_height = 4.5;
 
 module lock() {
     adjust = 3.4;
@@ -33,13 +30,16 @@ module lock() {
                         smoothness, center = true);
 }
 
+module angled_sidewall()
+    translate([-3, -1.5, 0])
+        rotate([0, 0, 23])
+            translate([-pipe_diam / 2, -pole_height-pipe_diam / 2, -(pipe_diam * 1.4) / 2])
+                smooth_cube(pipe_diam,
+                            pole_height + pipe_diam,
+                            pipe_diam * 1.4,
+                            smoothness);
+
 module leg() {
-    // back
-    translate([0, -leg_depth / 2 + pipe_diam / 2, 0])
-        smooth_cube(leg_length,
-                    pipe_diam,
-                    pipe_diam * 1.4,
-                    smoothness, center = true);
     lock();
 
     // hook
@@ -52,6 +52,34 @@ module leg() {
                     smooth_cube(pipe_diam, leg_depth*0.8, hook_height, smoothness, center = true);
     }
 
+    // straight sidewall:
+    translate([- leg_length / 2, -leg_depth/2, -total_height / 2])
+        smooth_cube(pipe_diam,
+                    leg_depth,
+                    total_height,
+                    smoothness);
+
+    hull() {
+        angled_sidewall();
+        // back bone:
+        translate([0, -leg_depth / 2 + pipe_diam / 2, 0])
+            smooth_cube(leg_length,
+                        pipe_diam,
+                        pipe_diam * 1.4,
+                        smoothness, center = true);
+
+    }
+
+    // wedge:
+    hull() {
+        translate([- leg_length / 2, -leg_depth/2, -total_height / 2])
+            smooth_cube(pipe_diam,
+                        pipe_diam,
+                        total_height,
+                        smoothness);
+
+        angled_sidewall();
+    }
 }
 
 module leg_placement() translate(leg_offset) children();
@@ -84,31 +112,14 @@ module anchor() {
             leg();
 
     // blinder:
-    rotate([0,0,10])
-        translate([3.25, 0, 0])
+    rotate([0, 0, 20])
+        translate([3.2, 0, 0])
             smooth_cube(
                 6.5,
-                lace_diameter,
-                lace_diameter + 2 * (lace_clearance + pipe_diam),
+                pipe_diam,
+                total_height,
                 smoothness,
                 center = true);
-
-    // tall sidewall:
-    leg_placement()
-        translate([- leg_length / 2, -leg_depth/2, -total_height / 2 - pole_height])
-            smooth_cube(pipe_diam,
-                        leg_depth,
-                        total_height + 2 * pole_height,
-                        smoothness);
-
-    // non-tall sidewall:
-    rotate([0, 0, 180])
-        leg_placement()
-            translate([- leg_length / 2, -leg_depth/2, -total_height / 2])
-                smooth_cube(pipe_diam,
-                            leg_depth,
-                            total_height,
-                            smoothness);
 }
 
 color("grey")
