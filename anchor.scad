@@ -8,7 +8,7 @@ tiewrap_thickness = 0.65;
 lace_clearance = 0.2;
 pole_to_pole = 3 * lace_diameter;
 lace_x_clearance = (pole_to_pole - lace_diameter) / 2;
-pipe_diam = 2.3;
+pipe_diam = 2.5;
 leg_y_spacing = 1.4 - pipe_diam * 0.2;
 connector_length = lace_diameter + 2 * lace_clearance + 2 * pipe_diam;
 leg_depth = 2 * pipe_diam + leg_y_spacing;
@@ -19,7 +19,7 @@ leg_spacing = tiewrap_thickness * 1.7 - 0.5;
 leg_offset = [leg_length / 2 + lace_diameter / 2 + lace_x_clearance, 1, 0];
 total_height = 3 * pipe_diam + 2 * leg_spacing;
 hook_height = pipe_diam * 1.4;
-pole_height = lace_diameter;
+pole_height = 3.5;
 
 module lock() {
     adjust = 3.4;
