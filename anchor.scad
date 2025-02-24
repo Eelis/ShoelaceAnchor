@@ -60,17 +60,17 @@ module roof()
     hull()
         rotate_copy(0, 0, 180)
             leg_placement()
-                translate([-leg_length / 2, -leg_depth / 2, lace_diameter / 2 + lace_clearance])
+                translate([-leg_length / 2, -leg_depth / 2, total_height / 2 - pipe_diam])
                     smooth_cube(
                         pipe_diam,
                         leg_depth,
                         pipe_diam, smoothness);
 
-module bottom_bar()
+module floor()
     hull()
         rotate_copy(0, 0, 180)
             leg_placement()
-                translate([-leg_length / 2, -leg_depth / 2, -lace_diameter / 2 - pipe_diam - lace_clearance])
+                translate([-leg_length / 2, -leg_depth / 2, -total_height / 2])
                     smooth_cube(
                         pipe_diam,
                         leg_depth,
@@ -78,7 +78,7 @@ module bottom_bar()
 
 module anchor() {
     roof();
-    bottom_bar();
+    floor();
     rotate_copy(0, 0, 180)
         leg_placement()
             leg();
