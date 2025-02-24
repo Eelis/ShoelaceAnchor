@@ -83,9 +83,15 @@ module anchor() {
         leg_placement()
             leg();
 
-    // center pillar:
-    translate([pipe_diam/2 - 0.5 * lace_diameter + 2 * lace_clearance, 0, 0])
-        smooth_cube(pipe_diam, leg_depth * 0.9, lace_diameter + 2 * (lace_clearance + pipe_diam), smoothness, center = true);
+    // blinder:
+    rotate([0,0,10])
+        translate([3.25, 0, 0])
+            smooth_cube(
+                6.5,
+                lace_diameter,
+                lace_diameter + 2 * (lace_clearance + pipe_diam),
+                smoothness,
+                center = true);
 
     // tall sidewall:
     leg_placement()
