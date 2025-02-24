@@ -98,10 +98,10 @@ module anchor() {
     // non-tall sidewall:
     rotate([0, 0, 180])
         leg_placement()
-            translate([- leg_length / 2, -leg_depth/2, -lace_diameter / 2 - pipe_diam])
+            translate([- leg_length / 2, -leg_depth/2, -total_height / 2])
                 smooth_cube(pipe_diam,
                             leg_depth,
-                            lace_diameter + 2 * pipe_diam,
+                            total_height,
                             smoothness);
 }
 
