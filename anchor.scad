@@ -88,20 +88,20 @@ module roof()
     hull()
         rotate_copy(0, 0, 180)
             leg_placement()
-                translate([-leg_length / 2, -leg_depth / 2, total_height / 2 - pipe_diam])
+                translate([-leg_length / 2, -pipe_diam / 2, total_height / 2 - pipe_diam])
                     smooth_cube(
                         pipe_diam,
-                        leg_depth,
+                        pipe_diam,
                         pipe_diam, smoothness);
 
 module floor()
     hull()
         rotate_copy(0, 0, 180)
             leg_placement()
-                translate([-leg_length / 2, -leg_depth / 2, -total_height / 2])
+                translate([-leg_length / 2, -pipe_diam / 2, -total_height / 2])
                     smooth_cube(
                         pipe_diam,
-                        leg_depth,
+                        pipe_diam,
                         pipe_diam, smoothness);
 
 module anchor() {
