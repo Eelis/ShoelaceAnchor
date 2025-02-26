@@ -13,7 +13,7 @@ smoothness = pipe_diam / 2;
 tiewrap_hole_width = tiewrap_width * 1.4;
 leg_length = tiewrap_hole_width + pipe_diam * 2;
 leg_spacing = tiewrap_thickness * 1.7 - 0.5;
-leg_offset = [leg_length / 2 + 4.5, 2, 0];
+leg_offset = [10, 2, 0];
 total_height = 3 * pipe_diam + 2 * leg_spacing;
 hook_height = pipe_diam * 1.4;
 pole_height = 2.5;
@@ -111,15 +111,8 @@ module anchor() {
         leg_placement()
             leg();
 
-    // blinder:
-    rotate([0, 0, 20])
-        translate([3.2, 0, 0])
-            smooth_cube(
-                6.5,
-                pipe_diam,
-                total_height,
-                smoothness,
-                center = true);
+    // center pole
+    cylinder(r = pipe_diam/2, h = total_height - pipe_diam, center = true);
 }
 
 color("grey")
