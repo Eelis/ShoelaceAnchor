@@ -19,7 +19,7 @@ hook_height = pipe_diam * 1.4;
 pole_height = 2.5;
 
 module lock() {
-    adjust = 3.4;
+    adjust = 3.7;
     mirror_copy(0, 0, 1)
         translate([-leg_length / 2 + ((leg_length - adjust)/2),
                    leg_depth / 2 - pipe_diam / 2,
