@@ -15,8 +15,8 @@ leg_spacing = tiewrap_thickness * 1.7 - 0.5;
 leg_offset = [10.75, 2, 0];
 total_height = 3 * pipe_diam + 2 * leg_spacing;
 hook_height = pipe_diam * 1.4;
-wedge_reach = 5;
-wedge_tip_offset = 2.7;
+wedge_reach = 4.5;
+wedge_tip_offset = 2.4;
 
 module lock() {
     adjust = 3.7;
