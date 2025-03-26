@@ -110,9 +110,6 @@ module anchor() {
     rotate_copy(0, 0, 180)
         leg_placement()
             leg();
-
-    // center pole
-    cylinder(r = pipe_diam/2, h = total_height - pipe_diam, center = true);
 }
 
 color("grey")
