@@ -1,12 +1,12 @@
-# Tie-Wrap Anchor for Twisted Shoelace
+# Shoelace Anchor
 
 ## Introduction
 
-The Tie-Wrap Anchor for Twisted Shoelace (TWATS) is an alternative to shoelace knots.
+The shoelace anchor is an alternative to shoelace knots.
 
-With TWATS, instead of tying a shoelace knot, you grab the anchor, pull, twist until the desired tightness is reached, and then secure the anchor in place by hooking it onto a small tie-wrap that's looped through two eyelets.
+Instead of tying a shoelace knot, you grab the anchor, pull, wrap, twist until the desired tightness is reached, and finally secure the anchor in place by hooking it onto a small tie-wrap that's looped through two eyelets.
 
-On e.g. Craftcloud, you can print a pair of Carbon Fiber PETG TWATS for ~5 EUR + shipping.
+On e.g. Craftcloud, you can print a pair of anchors for ~5 EUR + shipping.
 
 ## Features
 
@@ -21,3 +21,12 @@ On e.g. Craftcloud, you can print a pair of Carbon Fiber PETG TWATS for ~5 EUR +
 - thick shoelaces, e.g. 550 paracord (thin shoelaces don't twist very well)
 - very small tie-wraps (≤ 2.5mm wide)
 - OpenSCAD
+
+## Installation
+
+- run build.sh to generate anchor.stl
+- print anchor.stl in something reasonably strong (e.g. carbon-reinforced PLA)
+- remove shoelace from shoe
+- thread shoelace through big hole in anchor in the right orientation
+- re-thread shoelace through eyelets starting from the top and going down, joining the ends at the bottom with a small knot (e.g. fisherman's)
+- loop tie-wrap through the two topmost eyelets on one side, and close it
