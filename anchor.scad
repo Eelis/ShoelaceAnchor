@@ -11,6 +11,7 @@ leg_depth = 2 * pipe_diam + leg_y_spacing;
 smoothness = pipe_diam / 2;
 tiewrap_hole_width = tiewrap_width * 1.4;
 leg_length = tiewrap_hole_width + pipe_diam * 2;
+leg_to_hip = [tiewrap_hole_width / 2 + pipe_diam / 2, 0, 0];
 leg_spacing = tiewrap_thickness * 1.7 - 0.5;
 leg_offset = [10.75, 2, 0];
 total_height = 3 * pipe_diam + 2 * leg_spacing;
@@ -114,6 +115,10 @@ module anchor() {
     rotate_copy(0, 0, 180)
         leg_placement()
             leg();
+
+    // center pole
+    translate((leg_offset - leg_to_hip) * 0.15)
+        cylinder(r = pipe_diam/2, h = total_height - pipe_diam, center = true);
 }
 
 color("grey")
